@@ -491,16 +491,18 @@ require(plotrix) # package plotrix is needed for function "ablineclip""
 ## Plot
 op<-par(mfrow=c(1,2))
 plot(mprun,LamM, xlab=expression(paste("Mean pruning intensity, ", mu[p])), ylab=expression(paste("Population growth rate, ", lambda)), col="black", pch=21, bg = "grey", cex = 1.5)
-mtext(a)
+mtext("(a)", side=3, adj=0)
 
 reg1 <- lm(LamM~mprun)
 ablineclip(reg1, lwd=2, col="red") 
+abline(v=17.68, lty=2, col="gray")
 
 plot(sdprun,LamSD, xlab=expression(paste("SD pruning intensity, ", sigma[p])), ylab=expression(paste("Population growth rate, ", lambda)), col="black", pch=21, bg = "grey", cex = 1.5)
-mtext(b)
+mtext("(b)", side=3, adj=0)
 
 reg2 <- lm(LamSD~sdprun)
 ablineclip(reg2, lwd=2, col="blue") 
+abline(v=36.76, lty=2, col="gray")
 par(op)
 
 ### Results here show that with increasing mean individual level harvesting (pruning) rate, population growth rate decreases, which is expected. Now, what was not expected is that with increasing variance within population harvesting rate, population growth rate increases for a given mean harvesting rate (here the observed mean harvesting rate; will test later if this is true for different values of mean). This suggest that homogenizing harvesting intensity at population level (say, harvest every individual at 50%, thus driving the variance to 0) may not be a good harvesting strategy. One would rather increase harvesting variance, with some individual not harvested and other heavily harvested and some lighly harvested to offer a mosaic of trees with different harvesting burden and therefore different fitness which may compensate each other. Example for such mamagement system exist in fire ecology or grazing ecology where a spatial scale mosaic of vegetation at different grazing or fire burning level can ensure a better primary and secondary productivity. Here I am showing for the first time that this may be possible for non-timber forest product harvest.
